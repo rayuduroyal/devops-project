@@ -2,6 +2,10 @@
 
 ##Topics
 
+Type of shell scripting
+shell scripting file
+how to execute shell scripting
+
 .....
 
 1.she-bang & comments
