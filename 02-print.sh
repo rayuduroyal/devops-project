@@ -9,3 +9,10 @@
 echo hello world
 echo welcome
 
+# ESC sequeces , \n (new line) , \e (new tab)
+
+#syntax: echo -e "message\nNew line"
+# to enable any esc seq we need to enable -e option
+# also the input should be in quotes, preferably double quotes
+
+# echo -e "hello world\nwelcome"
