@@ -37,5 +37,12 @@ echo welcome
 # echo -e "\e[35mText in Magenta colour"
 # echo -e "\e[36mText in Cyan colour"
 
+# https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
+## color always follows
+echo -e "\e[31mText in Red color"
+echo Text in normal color
+
+
 
 
