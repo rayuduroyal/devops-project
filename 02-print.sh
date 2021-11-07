@@ -41,6 +41,7 @@ echo welcome
 
 ## color always follows
 echo -e "\e[31mText in Red color"
+
 echo Text in normal color
 
 
