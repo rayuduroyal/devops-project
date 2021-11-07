@@ -39,8 +39,8 @@ echo welcome
 
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
 
-## color always follows
-echo -e "\e[31mText in Red color"
+## color always follows , when we enable and its our responsibility to disable it as well, 0 color code is used to disable
+echo -e "\e[31mText in Red color\e[0m"
 
 echo Text in normal color
 
