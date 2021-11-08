@@ -14,3 +14,18 @@ b=abc
 
 # echo value of a=$a
 # echo value of b=$b
+
+# echo value of a=${a}
+# echo value of b=${b}
+
+x=10
+y=20
+# echo ${x}X${y} = 200
+
+# Date=2021-10-20
+# Date = $(Date +%f)
+# echo Good Morning , Welcome , Today date is $Date
+
+# arthematic substitution
+# ADD = $((2+3+4+5+6*7/2-5))
+# echo Added = $Add
