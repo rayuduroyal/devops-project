@@ -29,3 +29,5 @@ y=20
 # arthematic substitution
 # ADD = $((2+3+4+5+6*7/2-5))
 # echo Added = $Add
+
+# echo course name = $course_name
