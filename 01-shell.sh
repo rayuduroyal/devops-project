@@ -4,7 +4,8 @@
 
 # Any line starts with # is a comment and those lines will be ignored during execution
 
-ls
 
-ls -ltr
+
+
+
 
