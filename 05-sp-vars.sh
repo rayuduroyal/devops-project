@@ -14,4 +14,4 @@
 # number of values which are parsed
 # echo "# = $#"
 
-# echo -e "your name=$1\your age =$2"
+# echo -e "your name=$1\nyour age =$2"
