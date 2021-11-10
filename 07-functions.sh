@@ -5,10 +5,19 @@
 
 function abc() {
   echo iam a function abc
+  a=100
+  echo a in function =$a
+  b=20
+  echo first argument in function = $1
 }
 xyz() {
   iam a function xyz
 }
 
 ## main program
+a=10
 abc
+echo b in main program =$b
+xyz
+
+echo first argument in main program = $1
