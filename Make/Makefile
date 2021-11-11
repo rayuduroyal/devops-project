@@ -1,11 +1,11 @@
 help:
-    #grep '####' makefile | grep -v grep | sed -e 's/####//'
+	@grep '####' makefile | grep -v grep | sed -e 's/####//'
 none:
-     #echo -e "one - Target one\ntwo - target Two"
+	@echo -e "one - Target one\ntwo - target Two"
 one: #### Target one
-    #echo One
+	@echo One
 two: #### Target two
-    #echo Two
+	@echo Two
 
 ## target
 ##      rules
