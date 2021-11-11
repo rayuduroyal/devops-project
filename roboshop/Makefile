@@ -30,3 +30,4 @@ rabitmq: #### setup rabitmq component
 
 mongodb: #### setup mongodb component
 	@bash components/mongodb.sh
+
