@@ -3,10 +3,12 @@
 echo -e "\e[1minstalling Nginx\e[0m"
 yum install nginx -y
 
-exit
+echo -e "\e[1m enabling Nginx\e[0m"
 systemctl enable nginx
+echo -e "\e[1m starting Nginx\e[0m"
 systemctl start nginx
 
+exit
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
 
 cd /usr/share/nginx/html
