@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## functions should be always declared before using it, same like variable
-## so that is the reason, functio we always find in starting of the scripts
+## so that is the reason, function we always find in starting of the scripts
 
 function abc() {
   echo iam a function abc
@@ -24,3 +24,4 @@ echo b in main program =$b
 xyz
 
 echo first argument in main program = $1
+
