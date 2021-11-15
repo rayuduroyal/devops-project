@@ -27,12 +27,18 @@ unzip -o -d /tmp /tmp/frontend.zip &>>$Log
 stat $?
 
 print "copy files to nginx path"
-mv /tmp/frontend-main/static/* /usr/share/nginx/html/.
+mv /tmp/frontend-main/static/* /usr/share/nginx/html/. &>>$Log
 stat $?
 
-exit
-mv static/* .
-rm -rf frontend-master static README.md
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
-systemctl restart nginx
+print "copy Nginx Roboshop config file"
+cp /tmp/frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$Log
+stat $?
+
+print "Enabling nginx"
+systemctl enable nginx &>>$Log
+stat $?
+
+print "starting nginx"
+systemctl start nginx &>>$Log
+stat $?
 
