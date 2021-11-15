@@ -27,7 +27,7 @@ unzip -d /usr/share/nginx/html /tmp/frontend.zip &>>$Log
 stat $?
 
 print "copy files to nginx path"
-mv /tmp/frontend-main/static/* /usr/share/nginx/html/.
+mv  /tmp/frontend-main/static/* /usr/share/nginx/html/.
 stat $?
 
 exit
