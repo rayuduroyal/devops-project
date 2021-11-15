@@ -12,34 +12,34 @@ help:
 git-pull:
 	@git pull &>/dev/null
 
-cart: ## setup cart component
+cart: git-pull ## setup cart component
 	@bash components/cart.sh
 
-catalogue: ## setup catalogue component
+catalogue: git-pull ## setup catalogue component
 	@bash components/catalogue.sh
 
-user: ## setup user component
+user: git-pull ## setup user component
 	@bash components/user.sh
 
-shipping: ## setup shipping component
+shipping: git-pull ## setup shipping component
 	@bash components/shipping.sh
 
-payment: ## setup payment component
+payment: git-pull ## setup payment component
 	@bash components/payment.sh
 
-frontend: ## setup frontend component
+frontend: git-pull ## setup frontend component
 	@bash components/frontend.sh
 
-mysql: ## setup mysql component
+mysql: git-pull ## setup mysql component
 	@bash components/mysql.sh
 
-redis: ## setup redis component
+redis: git-pull ## setup redis component
 	@bash components/redis.sh
 
-rabitmq: ## setup rabitmq component
+rabitmq: git-pull ## setup rabitmq component
 	@bash components/rabitmq.sh
 
-mongodb: ## setup mongodb component
+mongodb: git-pull ## setup mongodb component
 	@bash components/mongodb.sh
 
 
