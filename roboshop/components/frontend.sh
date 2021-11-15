@@ -30,6 +30,7 @@ print "copy files to nginx path"
 mv /tmp/frontend-main/static/* /usr/share/nginx/html/.
 stat $?
 
+exit
 mv static/* .
 rm -rf frontend-master static README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
