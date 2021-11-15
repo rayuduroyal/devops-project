@@ -9,7 +9,7 @@ else
 fi
 
 if [ $UID -eq 0 ]; then
-  echo you are a root use
+  echo you are a root user
 else
    echo you are nonroot user
 fi
