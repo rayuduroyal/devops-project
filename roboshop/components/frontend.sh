@@ -1,11 +1,15 @@
 #!/bin/bash
 
-echo -e "\e[1minstalling Nginx\e[0m"
+print() {
+  echo -e "\e[1m$1\e[0m"
+  }
+
+print "installing nginx"
 yum install nginx -y
 
-echo -e "\e[1m enabling Nginx\e[0m"
+print "enabling nginx"
 systemctl enable nginx
-echo -e "\e[1m starting Nginx\e[0m"
+print "starting nginx"
 systemctl start nginx
 
 exit
