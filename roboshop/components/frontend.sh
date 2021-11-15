@@ -2,12 +2,16 @@
 
 source components/common.sh
 
+print "installing nginx"
+yum install nginx -y &>>$Log
+stat $?
+
 print "enabling nginx"
-systemctl enable nginx
+systemctl enable nginx &>>$Log
 stat $?
 
 print "starting nginx"
-systemctl start nginx
+systemctl start nginx &>>$Log
 stat $?
 
 exit
