@@ -23,11 +23,11 @@ rm -rf /usr/share/nginx/html/* &>>$Log
 stat $?
 
 print "extract frontend archive"
-unzip -d /usr/share/nginx/html /tmp/frontend.zip &>>$Log
+unzip -d /tmp /tmp/frontend.zip &>>$Log
 stat $?
 
 print "copy files to nginx path"
-mv  /tmp/frontend-main/static/* /usr/share/nginx/html/.
+mv /tmp/frontend-main/static/* /usr/share/nginx/html/.
 stat $?
 
 exit
