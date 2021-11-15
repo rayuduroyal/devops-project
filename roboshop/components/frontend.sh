@@ -16,6 +16,7 @@ else
   echo -e "\e[1;31mFAILURE\e[0m"
 fi
 
+
 print "enabling nginx"
 systemctl enable nginx
 print "starting nginx"
