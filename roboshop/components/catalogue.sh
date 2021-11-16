@@ -3,23 +3,23 @@
 source components/common.sh
 
 print "Install NodeJS"
-yum install nodejs make gcc-c++ -y &>>$LOG
+yum install nodejs make gcc-c++ -y &>>$Log
 stat $?
 
 print "Add RoboShop User"
-useradd roboshop &>>$LOG
+useradd roboshop &>>$Log
 stat $?
 
 print "Download Catalogue"
-curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>$LOG
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>$Log
 stat $?
 
 print "Remove Old content"
-rm -rf /home/roboshop/catalogue &>>$LOG
+rm -rf /home/roboshop/catalogue &>>$Log
 stat $?
 
 print "Extract Catalogue"
-unzip -o -d  /home/roboshop /tmp/catalogue.zip &>>$LOG
+unzip -o -d  /home/roboshop /tmp/catalogue.zip &>>$Log
 stat $?
 
 
