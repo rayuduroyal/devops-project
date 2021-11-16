@@ -7,7 +7,7 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/robos
 stat $?
 
 print "Install MongoDB"
-yum install -y Mongodb-org &>>$Log
+yum install -y mongodb-org &>>$Log
 stat $?
 
 print "Update MongoDB Config"
