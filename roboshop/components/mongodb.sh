@@ -6,7 +6,7 @@ print "download repo"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
 stat $?
 
-print "installing MongoDB"
+print "install MongoDB"
 yum install -y mongodb-org &>>$LOG
 stat $?
 
