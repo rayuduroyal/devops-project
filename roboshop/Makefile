@@ -13,34 +13,34 @@ git-pull:
 	@echo ......+ pulling Git code +......
 	@git pull &>/dev/null
 
-cart: git-pull ## setup cart component
+cart:git-pull ## setup cart component
 	@sudo bash components/cart.sh
 
-catalogue: git-pull ## setup catalogue component
+catalogue:git-pull ## setup catalogue component
 	@sudo bash components/catalogue.sh
 
-user: git-pull ## setup user component
+user:git-pull ## setup user component
 	@sudo bash components/user.sh
 
-shipping: git-pull ## setup shipping component
+shipping:git-pull ## setup shipping component
 	@sudo bash components/shipping.sh
 
-payment: git-pull ## setup payment component
+payment:git-pull ## setup payment component
 	@sudo bash components/payment.sh
 
-frontend: git-pull ## setup frontend component
+frontend:git-pull ## setup frontend component
 	@sudo bash components/frontend.sh
 
-mysql: git-pull ## setup mysql component
+mysql:git-pull ## setup mysql component
 	@sudo bash components/mysql.sh
 
-redis: git-pull ## setup redis component
+redis:git-pull ## setup redis component
 	@sudo bash components/redis.sh
 
-rabitmq: git-pull ## setup rabitmq component
+rabitmq:git-pull ## setup rabitmq component
 	@sudo bash components/rabitmq.sh
 
-mongodb: git-pull ## setup mongodb component
+mongodb:git-pull ## setup mongodb component
 	@sudo bash components/mongodb.sh
 
 
