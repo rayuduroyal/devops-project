@@ -27,6 +27,16 @@ print "Extract Catalogue"
 unzip -o -d  /home/roboshop /tmp/catalogue.zip &>>$Log
 stat $?
 
+print "Copy Content"
+mv /home/roboshop/catalogue-main /home/roboshop/catalogue &>>$Log
+stat $?
+
+print "Install NodeJS Dependencies"
+cd /home/roboshop/catalogue
+npm install &>>$Log
+stat $?
+
+
 exit
 $ mv catalogue-main catalogue
 $ cd /home/roboshop/catalogue
