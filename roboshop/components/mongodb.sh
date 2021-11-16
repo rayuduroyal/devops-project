@@ -22,7 +22,7 @@ print "Enabling MongoDB"
 syste#mctl enable mongod &>>$Log
 stat $?
 
-print "Download schema"
+print "Download Schema"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$Log
 stat $?
 
@@ -30,7 +30,7 @@ print "Extract Schema"
 Unzip -o -d /tmp /tmp/mongodb.zip &>>$Log
 stat $?
 
-print "Load schema"
+print "Load Schema"
 cd /tmp/mongodb-main
 mongo < catalogue.js &>>$Log
 mongo < users.js. &>>$Log
