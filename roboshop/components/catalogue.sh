@@ -23,7 +23,6 @@ unzip -o -d  /home/roboshop /tmp/catalogue.zip &>>$Log
 stat $?
 
 
-exit
 $ mv catalogue-main catalogue
 $ cd /home/roboshop/catalogue
 $ npm install
