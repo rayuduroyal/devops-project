@@ -36,4 +36,3 @@ mongo < catalogue.js &>>$Log
 mongo < users.js. &>>$Log
 stat $?
 
-
