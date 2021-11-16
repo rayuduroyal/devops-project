@@ -7,33 +7,33 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/robos
 stat $?
 
 print "Install MongoDB"
-yum install -y mongodb-org &>>$LOG
+yum install -y mongodb-org
 stat $?
 
 print "Update MongoDB Config"
-sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>$LOG
+sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 stat $?
 
 print "Start MongoDB"
-systemctl Restart mongod &>>$LOG
+systemctl Restart mongod
 stat $?
 
 print "Enabling MongoDB"
-syste#mctl enable mongod &>>$LOG
+syste#mctl enable mongod
 stat $?
 
 print "Download schema"
-curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$LOG
+curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
 stat $?
 
 print "Extract Schema"
-Unzip -o -d /tmp mongodb.zip &>>$LOG
+Unzip -o -d /tmp mongodb.zip
 stat $?
 
 print "Load schema"
 cd /tmp/mongodb-main
-mongo < catalogue.js  &>>$LOG
-mongo < users.js &>>$LOG
+mongo < catalogue.js
+mongo < users.js
 stat $?
 
 
