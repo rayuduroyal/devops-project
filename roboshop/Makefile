@@ -43,8 +43,3 @@ rabitmq: git-pull ## setup rabitmq component
 mongodb: git-pull ## setup mongodb component
 	@sudo bash components/mongodb.sh
 
-
-
-
-
-
