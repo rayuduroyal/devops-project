@@ -40,13 +40,17 @@ print "Fix App Permissions"
 chown -R roboshop:roboshop /home/roboshop &>>$Log
 stat $?
 
+print "Update Dns records in SystemD Config"
+set -i -e 's/MONGO DNSNAME/mongodb.roboshop.internal'/home/roboshop/catalogue/systemd.service &>>$Log
+stat $?
 
-exit
-NOTE: We need to update the IP address of MONGODB Server in systemd.service file
-Now, lets set up the service with systemctl.
+print "Copy SystemD File"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>$Log
+stat $?
 
-# mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-# systemctl daemon-reload
-# systemctl start catalogue
-# systemctl enable catalogue
-26 visits in last 30 days
+print "Start Catalogue Service"
+systemctl daemon-reload &>>$Log
+systemctl restart catalogue &>>$Log
+systemctl enable catalogue &>>$Log
+stat $?
+
