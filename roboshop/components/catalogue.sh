@@ -4,8 +4,6 @@ source components/common.sh
 
 MSPACE=$(cat $0 | grep ^print | awk -F '"' '{print $2}' | awk '{ print length }' | sort | tail -1)
 
-exit
-
 print "Install NodeJS"
 yum install nodejs make gcc-c++ -y &>>$Log
 stat $?
