@@ -22,3 +22,5 @@ stat $?
 print "Start Redis Database"
 systemctl enable redis &>>$Log && systemctl start redis &>>$Log
 stat $?
+
+
