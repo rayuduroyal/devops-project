@@ -9,11 +9,11 @@ COMPONENT_NAME=MySQL
 COMPONENT=mysql
 
 Print "Setup MySQL Repo"
-curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo
+curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>$Log
 Stat $?
 
 Print "Install MariaDB Service"
-yum remove mariadb-libs -y &>>$Log  && yum install mysql-community-server -y
+yum remove mariadb-libs -y &>>$Log  && yum install mysql-community-server -y &>>$Log
 Stat $?
 
 Print "Start MySQL Service"
