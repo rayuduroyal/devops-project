@@ -7,7 +7,7 @@ Print() {
     SPACE=$(($SPACE-1))
   done
   echo -n -e "\e[1m$1${SPACES}\e[0m  ... "
-  echo -e "\n\e[36m======================== $1 ========================\e[0m"
+  echo -e "\n\e[36m======================== $1 ========================\e[0m" &>>$LOG
 }
 
 Stat() {
@@ -25,10 +25,10 @@ rm -f $LOG
 
 DOWNLOAD() {
   Print "Download $COMPONENT_NAME"
-  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$Log
+  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
   Stat $?
   Print "Extract $COMPONENT_NAME Content"
-  unzip -o -d $1 /tmp/${COMPONENT}.zip &>>$Log
+  unzip -o -d $1 /tmp/${COMPONENT}.zip &>>$LOG
   Stat $?
   if [ "$1" == "/home/roboshop" ]; then
     Print "Remove Old Content"
@@ -42,30 +42,30 @@ DOWNLOAD() {
 
 ROBOSHOP_USER() {
   Print "Add RoboShop User"
-  id roboshop &>>$Log
+  id roboshop &>>$LOG
   if [ $? -eq 0 ]; then
-    echo User RoboShop already exists &>>$Log
+    echo User RoboShop already exists &>>$LOG
   else
-    useradd roboshop  &>>$Log
+    useradd roboshop  &>>$LOG
   fi
   Stat $?
 }
 
 SYSTEMD() {
   Print "Fix App Permissions"
-  chown -R roboshop:roboshop /home/roboshop
+  chown -R roboshop:roboshop /home/roboshop &>>$LOG
   Stat $?
 
   Print "Update DNS records in SystemD config"
-  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service  &>>$Log
+  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service  &>>$LOG
   Stat $?
 
   Print "Copy SystemD file"
-  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>$Log
+  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>$LOG
   Stat $?
 
   Print "Start ${COMPONENT_NAME} Service"
-  systemctl daemon-reload &>>$Log && systemctl restart ${COMPONENT} &>>$Log && systemctl enable ${COMPONENT} &>>$Log
+  systemctl daemon-reload &>>$LOG && systemctl restart ${COMPONENT} &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG
   Stat $?
 }
 
