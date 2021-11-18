@@ -5,6 +5,7 @@ MSPACE=$(cat $0 components/common.sh | grep Print | awk -F '"' '{print $2}' | aw
 
 COMPONENT_NAME=User
 COMPONENT=user
+
 NODEJS
 
 print "Checking DB Connections From APP"
