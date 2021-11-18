@@ -13,7 +13,7 @@ curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/robo
 Stat $?
 
 Print "Install MariaDB Service"
-yum remove mariadb-libs -y &>>$Log  && yum install mysql-community-server -y &>>$Log
+yum remove mariadb-libs -y &>>$Log  && yum install mysql-community-server -y
 Stat $?
 
 Print "Start MySQL Service"
