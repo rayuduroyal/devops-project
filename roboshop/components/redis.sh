@@ -15,9 +15,11 @@ print "Install Redis"
 yum install redis -y &>>$Log
 stat $?
 
+
 print "Update Redis Listen Address"
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf &>>$Log
 stat $?
+
 
 print "Start Redis Database"
 systemctl enable redis &>>$Log && systemctl start redis &>>$Log
