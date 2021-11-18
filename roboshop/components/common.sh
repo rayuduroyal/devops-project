@@ -21,7 +21,7 @@ Stat() {
 }
 
 LOG=/tmp/roboshop.log
-rm -f $Log
+rm -f $LOG
 
 DOWNLOAD() {
   Print "Download $COMPONENT_NAME"
