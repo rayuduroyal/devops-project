@@ -7,5 +7,4 @@ COMPONENT_NAME=User
 COMPONENT=user
 
 NODEJS
-
-check_mongo_from_app
+CHECK_MONGO_FROM_APP
