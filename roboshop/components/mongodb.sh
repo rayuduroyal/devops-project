@@ -1,39 +1,36 @@
 #!/bin/bash
 
 source components/common.sh
-MSPACE=$(cat $0 | grep ^print | awk -F '"' '{print $2}' | awk '{ print length }' | sort | tail -1)
+MSPACE=$(cat $0 | grep Print | awk -F '"' '{print $2}' | awk '{ print length }' | sort | tail -1)
 
-print "Download Repo"
-curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo. &>>$LOG
-stat $?
+COMPONENT_NAME=MongoDB
+COMPONENT=mongodb
 
-print "Install MongoDB"
+Print "Download Repo"
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>$LOG
+Stat $?
+
+Print "Install MongoDB"
 yum install -y mongodb-org &>>$LOG
-stat $?
+Stat $?
 
-print "Update MongoDB Config"
+Print "Update MongoDB Config"
 sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>$LOG
-stat $?
+Stat $?
 
-print "Start MongoDB"
-systemctl Restart mongod &>>$LOG
-stat $?
+Print "Start MongoDB"
+systemctl restart mongod &>>$LOG
+Stat $?
 
-print "Enabling MongoDB"
-syste#mctl enable mongod &>>$LOG
-stat $?
+Print "Enable MongoDB Service"
+systemctl enable mongod &>>$LOG
+Stat $?
 
-print "Download Schema"
-curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$LOG
-stat $?
+DOWNLOAD "/tmp"
 
-print "Extract Schema"
-Unzip -o -d /tmp /tmp/mongodb.zip &>>$LOG
-stat $?
-
-print "Load Schema"
+Print "Load Schema"
 cd /tmp/mongodb-main
-mongo < catalogue.js &>>$LOG
-mongo < users.js. &>>$LOG
-stat $?
-
+for db in catalogue users ; do
+  mongo < $db.js &>>$LOG
+done
+Stat $?
