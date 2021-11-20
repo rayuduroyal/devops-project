@@ -53,20 +53,36 @@ ROBOSHOP_USER() {
 
 SYSTEMD() {
   Print "Fix App Permissions"
-  chown -R roboshop:roboshop /home/roboshop &>>$LOG
+  chown -R roboshop:roboshop /home/roboshop
   Stat $?
 
   Print "Update DNS records in SystemD config"
-  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service  &>>$LOG
+  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service   &>>$LOG
   Stat $?
 
   Print "Copy SystemD file"
-  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>$LOG
+  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
   Stat $?
 
   Print "Start ${COMPONENT_NAME} Service"
   systemctl daemon-reload &>>$LOG && systemctl restart ${COMPONENT} &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG
   Stat $?
+}
+
+MAVEN() {
+  Print "Install Maven"
+  yum install maven -y &>>$LOG
+  Stat $?
+
+  ROBOSHOP_USER
+  DOWNLOAD "/home/roboshop"
+
+  Print "Make Maven package"
+  cd /home/roboshop/${COMPONENT}
+  mvn clean package &>>$LOG && mv target/shipping-1.0.jar shipping.jar &>>$LOG
+  Stat $?
+
+  SYSTEMD
 }
 
 CHECK_MONGO_FROM_APP() {
