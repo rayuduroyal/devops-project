@@ -15,7 +15,7 @@ CREATE() {
   IP=$(aws ec2 describe-instances --filters  "Name=tag:Name,Values=$1" | jq ".Reservations[].Instances[].PrivateIpAddress" | grep -v null )
   ## xargs is used to remove the double  quotes
   sed -e "s/DNSNAME/$1.roboshop.internal/" -e "s/IPADDRESS/${IP}/" record.json >/tmp/record.json
-  aws route53 change-resource-record-sets --hosted-zone-id Z061860719ROPUM6YV8RG --change-batch file:///tmp/record.json | jq  &>/dev/null
+  aws route53 change-resource-record-sets --hosted-zone-id Z0641400MP3ISPG0RSOK --change-batch file:///tmp/record.json | jq  &>/dev/null
 }
 
 if [ "$1" == "all" ]; then
