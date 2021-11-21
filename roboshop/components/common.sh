@@ -69,6 +69,28 @@ SYSTEMD() {
   Stat $?
 }
 
+PYTHON() {
+  Print "Install Python 3"
+  yum install python36 gcc python3-devel -y &>>$LOG
+  Stat $?
+
+  ROBOSHOP_USER
+  DOWNLOAD "/home/roboshop"
+
+  Print "Install the dependencies"
+  cd /home/roboshop/${COMPONENT}
+  pip3 install -r requirements.txt &>>$LOG
+  Stat $?
+  USER_ID=$(id -u roboshop)
+  GROUP_ID=$(id -g roboshop)
+
+  Print "Update ${COMPONENT_NAME} Service"
+  sed -i -e "/uid/ c uid = ${USER_ID}" -e "/gid/ c gid = ${GROUP_ID}" /home/roboshop/${COMPONENT}/${COMPONENT}.ini &>>$LOG
+  Stat $?
+
+  SYSTEMD
+}
+
 MAVEN() {
   Print "Install Maven"
   yum install maven -y &>>$LOG
