@@ -11,3 +11,8 @@ while [ $a -gt 0 ]; do
   a=$(($a-1))
 done
 
+# syntax : for var in items ; do commands ;done
+
+for fruit in apple banana orange mango ; do
+  echo Fruit Name = $fruit
+done
