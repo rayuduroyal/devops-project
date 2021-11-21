@@ -7,7 +7,7 @@ Print() {
     SPACE=$(($SPACE-1))
   done
   echo -n -e "\e[1m$1${SPACES}\e[0m  ... "
-  echo -e "\n\e[36m======================== $1 ========================\e[0m" &>>$LOG
+  echo -e "\n\e[36m======================== $1 ========================\e[0m" >>$LOG
 }
 
 Stat() {
@@ -15,7 +15,7 @@ Stat() {
     echo -e "\e[1;32mSUCCESS\e[0m"
   else
     echo -e "\e[1;31mFAILURE\e[0m"
-    echo -e "\e[1;33mScript Failed and check the detailed log in $Log file\e[0m"
+    echo -e "\e[1;33mScript Failed and check the detailed log in $LOG file\e[0m"
     exit 1
   fi
 }
@@ -107,17 +107,34 @@ MAVEN() {
   SYSTEMD
 }
 
-CHECK_MONGO_FROM_APP() {
-  print "Checking DB Connections From APP"
-  sleep 5
-  STAT=$(curl -s localhost:8080/health | jq .mongo)
-  if [ "$STAT" == "true" ];then
-    stat 0
-  else
-    stat 1
-  fi
+NODEJS() {
+  Print "Install NodeJS"
+  yum install nodejs make gcc-c++ -y  &>>$LOG
+  Stat $?
 
+  ROBOSHOP_USER
+
+  DOWNLOAD "/home/roboshop"
+
+  Print "Install NodeJS dependencies"
+  cd /home/roboshop/${COMPONENT}
+  npm install --unsafe-perm &>>$LOG
+  Stat $?
+
+  SYSTEMD
 }
+
+CHECK_MONGO_FROM_APP() {
+  Print "Checking DB Connections from APP"
+  sleep 5
+  STAT=$(curl -s localhost:8080/health  | jq .mongo)
+  if [ "$STAT" == "true" ]; then
+    Stat 0
+  else
+    Stat 1
+  fi
+}
+
 
 CHECK_REDIS_FROM_APP() {
   Print "Checking DB Connections from APP"
