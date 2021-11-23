@@ -2,7 +2,7 @@
   hosts: all
   tasks:
     - name: Print Task1
-      ansible.built.debug:
+      ansible.builtin.debug:
         msg: "Task1"
 
     - name: Print Task2
