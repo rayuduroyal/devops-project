@@ -5,9 +5,9 @@
       ansible.built.debug:
         msg: "Task1"
 
-    -name: Print Task2
-     ansible.builtin.debug:
-       msg: "Task2"
+    - name: Print Task2
+      ansible.builtin.debug:
+        msg: "Task2"
 
 - name: Play2
   hosts: all
