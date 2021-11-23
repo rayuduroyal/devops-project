@@ -9,3 +9,4 @@
     - name: Access URL in Task1
       ansible.builtin.debug:
         msg: URL in Task1 = {{URL}}
+
