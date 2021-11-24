@@ -8,3 +8,13 @@
     state: restarted
     name: nginx
     enabled: yes
+
+- name: Download code
+  include_role:
+    name: common
+    tasks-from: download
+
+- name: Remove old content
+  ansible.builtin.file:
+  path: /usr/share/nginx/html
+  state: absent
