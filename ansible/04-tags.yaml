@@ -7,9 +7,13 @@
       tags:
         - fruits
         - fruit
+
     - name: Groceries
       debug:
         msg: groceries
       tags:
         - groceries
         - cerals
+
+
+# Tags can be applied on plays in playbook
