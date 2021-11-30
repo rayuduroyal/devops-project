@@ -1,5 +1,5 @@
 - name: Demo on tags
-  hosts: local
+  hosts: localhost
   tasks:
     - name: Fruits
       debug:
