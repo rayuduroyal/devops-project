@@ -4,6 +4,12 @@
     - name: Fruits
       debug:
         msg: Fruits
+      tags:
+        - fruits
+        - fruit
     - name: Groceries
       debug:
         msg: groceries
+      tags:
+        - groceries
+        - cerals
