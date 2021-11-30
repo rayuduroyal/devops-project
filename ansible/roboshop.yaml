@@ -7,7 +7,7 @@
 
 - name: Setup MongoDB
   hosts: mongodb
-  become: true
+  become: false
   tags: mongodb
   roles:
     - mongodb
