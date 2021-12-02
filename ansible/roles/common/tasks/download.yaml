@@ -20,12 +20,6 @@
     src: /tmp/{{COMPONENT}}-main/
     dest: "{{APP_LOCATION}}"
     remote_src: true
-  become_user: roboshop
+  become_user: "{{APP_USER}}"
   when: APP_TYPE == "backend"
 
- - name: Copy App code
-   copy:
-     src: /tmp/{{COMPONENT}}-main/
-     dest: "{{APP_LOCATION}}"
-     remote_src: true
-   when: APP_TYPE == "frontend"
