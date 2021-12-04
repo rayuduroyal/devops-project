@@ -24,6 +24,9 @@ resource "aws_security_group" "allow_sample" {
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
 
     }
   ]
@@ -36,6 +39,9 @@ resource "aws_security_group" "allow_sample" {
       protocol         = "-1"
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
     }
   ]
 
