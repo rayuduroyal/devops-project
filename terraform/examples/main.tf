@@ -15,6 +15,7 @@ module "ec2" {
   SGID          = module.sg.SGID
   name          = ["new1", "new2"]
   instance_type = var.instance_type
+  env           = var.env
 }
 
 module "sg" {
