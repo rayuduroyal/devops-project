@@ -10,8 +10,7 @@ terraform {
   }
 }
 
-module "ec2.1" {
-  count  = 2
+module "ec2" {
   source = "./ec2"
   SGID   = module.sg.SGID
 }
