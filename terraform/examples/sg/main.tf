@@ -35,3 +35,6 @@ resource "aws_security_group" "allow_sample" {
   }
 }
 
+output "SGID" {
+  value = aws_security_group.allow_sample.id
+}
