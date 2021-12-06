@@ -1,2 +1,2 @@
 instance_type = "t3micro"
-env = "prod"
+env = "dev"
