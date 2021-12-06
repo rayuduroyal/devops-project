@@ -37,7 +37,7 @@ $ sh script.sh
 7.conditions
 8.Loops
 9.SED Editor n
-9.SED Editor n
+
 
 .....
 ## Then go with setting up roboshop project
